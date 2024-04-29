@@ -35,7 +35,7 @@ Some names are used in Java as the so called **keywords**. They have special mea
 
 ![](https://github.com/Java-PJATK/02.AAG-Literals/blob/main/images/JavaKeywords.PNG?raw=true)
 
-|  &nbsp;  |   &nbsp;  | &nbsp;   | &nbsp;    | &nbsp;    |
+|  &nbsp;    |   &nbsp;   | &nbsp;     | &nbsp;     | &nbsp;     |
 |------------|------------|------------|------------|------------|
 | abstract   | continue   | for        | new        | switch     |
 | assert     | default    | goto       | package    | synchronized |
