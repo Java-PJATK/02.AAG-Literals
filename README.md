@@ -114,37 +114,85 @@ The symbol of AND is ’&’, so interpreting these sequences of bits as numbers
 
 Similarly, ORing corresponds to alternative, or logical disjunction (denoted by a vertical bar) — to be true, at least one operand must be true:
 
-![](main-5.png)
+```
+0 1 1 0 1 1 0 0
+0 1 0 1 0 1 0 1
+---------------
+|
+0 1 1 1 1 1 0 1
+```
 
 what corresponds to 108 | 85 = 125.
 
 Another operation is XORing (exclusive or), denoted by ’"’. Here we get true only if two operands are different:
 
-![](main-6.png)
+```
+0 1 1 0 1 1 0 0
+0 1 0 1 0 1 0 1
+---------------
+^
+0 0 1 1 1 0 0 1
+```
 
-or 108 ^ 85 = 57. XORing has several interesting (and useful) features. For example, let’s consider XORing a number with 1’s:
+or 108<sup>^</sup> 85 = 57. XORing has several interesting (and useful) features. For example, let’s consider XORing a number with 1’s:
 
-![](main-7.png)
+```
+0 1 1 0 1 1 0 0
+1 1 1 1 1 1 1 1
+---------------
+^
+1 0 0 1 0 0 1 1
+```
 
 As we can see, the result is like the original value, but with all bits flipped: 0 → 1, 1 → 0. Now let’s XOR the same number with 0’s:
 
-![](main-8.png)
+```
+0 1 1 0 1 1 0 0
+0 0 0 0 0 0 0 0
+---------------
+^
+0 1 1 0 1 1 0 0
+```
 
 Now the original number has been exactly reproduced. So, XORing with 1 flips the bit, XORing with 0 - leaves it intact. It follows, that XORing any bit with the same bit-value (whether it’s 0 or 1) twice always reproduces the original value:
 
-![](main-9.png)
+```
+0 1 1 0 1 1 0 0
+0 1 0 1 0 1 0 1
+---------------
+^
+0 0 1 1 1 0 0 1
+```
 
-and we XOR the result again with 01010101: what reproduces the original sequence of bits 01101100.
+and we XOR the result again with 01010101:   
 
-Negation (NOT, symbol ’~’) of a sequence of bits yields the same sequence but with all bits reversed (flipped):
+```
+0 0 1 1 1 0 0 1
+0 1 0 1 0 1 0 1
+---------------
+^
+0 1 1 0 1 1 0 0
+```
 
-Other useful operations on sequences of bits are shifts — to the left or to the right by a given number of bits. When we shift bits to the left (symbol <<), all bits coming out on the left edge just disappear and zeros come in from the right side:
+what reproduces the original sequence of bits 01101100.  
 
-![](main-10.png)
+Negation (NOT, symbol '~') of a sequence of bits yields the same sequence but with all bits reversed (flipped):
 
-while the opposite holds for right shift (>>>):
+```
+~ 0 1 1 0 1 1 0 0    ->    1 0 0 1 0 0 1 1
+```
 
-![](main-11.png)
+Other useful operations on sequences of bits are shifts — to the left or to the right by a given number of bits. When we shift bits to the left (symbol `<<`), all bits coming out on the left edge just disappear and zeros come in from the right side:
+
+```
+0 1 1 0 1 1 0 0 << 2    ->    1 0 1 1 0 0 0 0
+```
+
+while the opposite holds for right shift (`>>>`):
+
+```
+0 1 1 0 1 1 0 0 >>> 2    ->    0 0 0 1 1 0 1 1
+```
 
 There is also >> operator — here, what comes in from the left is the value of the highest (leftmost) bit: if that is 0 (was corresponds to positive numbers), then zeros come in while if its is 1 (negative numbers), then ones will come in. More details can be found in Section [5.1.4](#bookmark10) on p. [25](#bookmark10).
 
