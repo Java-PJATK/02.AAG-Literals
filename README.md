@@ -82,11 +82,11 @@ The primitive types are (number of bytes is given in parentheses):
 
 Let us explain how integral values are represented in computer’s memory. Consider a byte: it contains 8 bits, so we can represent it by a sequence of eight digits, each of which is 0 or 1:
 
-b<sub>7</sub>b<sub>6</sub>b<sub>5</sub>b<sub>4</sub>b<sub>3</sub>b<sub>2</sub>b<sub>1</sub>b<sub>0</sub>
+&nbsp;&nbsp;&nbsp;&nbsp;b<sub>7</sub>b<sub>6</sub>b<sub>5</sub>b<sub>4</sub>b<sub>3</sub>b<sub>2</sub>b<sub>1</sub>b<sub>0</sub>
 
 This can be interpreted as a number in the binary system, so consecutive digits (from the right) are coefficients at consecutive powers of 2. There is a quirk, however: in order to be able to represent also negative numbers, the term with the highest power of 2 is taken with negative sign
 
-\-b7 ∙ 27 + b6 ∙ 26 + b5 ∙ 25 + b4 ∙ 24 + b3 ∙ 23 + b2 ∙ 22 + b1 ∙ 21 + b0 ∙ 20 
+&nbsp;&nbsp;&nbsp;&nbsp;\-b<sub>7</sub> ∙ 2<sup>7</sup> + b<sub>6</sub> ∙ 2<sup>6</sup> + b<sub>5</sub> ∙ 2<sup>5</sup> + b<sub>4</sub> ∙ 2<sup>4</sup> + b<sub>3</sub> ∙ 2<sup>3</sup> + b<sub>2</sub> ∙ 2<sup>2</sup> + b<sub>1</sub> ∙ 2<sup>1</sup> + b<sub>0</sub> ∙ 2<sup>0</sup> 
 
 Therefore, to get the highest possible value of a byte, we should set this negative part to zero, and all remaining terms with coefficient 1 — for numbers represented by one byte it would be  01111111
 
