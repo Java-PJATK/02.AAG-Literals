@@ -1,13 +1,13 @@
 # 2.AAG-Literals
 Listing 2 AAG-Literals/Literals.java Page 13
 
-### Section 3. Types, variables, literals  
+# Section 3. Types, variables, literals  
 
-##### 3.1    Primitive types  
+## 3.1    Primitive types  
 
 Any piece of data must have a **type**. In Java, the types that may correspond to named variables are called **primitive** (or fundamental) types. We may think of a **variable** of a primitive type as of a named piece of memory containing a single value of a well defined type. The type of a variable determines its length (number of bytes it occupies) and the way its contents is interpreted. In Java, only variables of primitive types can be created locally, on the stack — objects of all other types can only be created on the heap (free memory) and never have names (identifiers). We will explain what stack and heap are shortly.  
 
-###### 3.1.1    Names  
+### 3.1.1    Names  
 
 We have just mentioned that only variables of primitive types can have names (identifiers). So let’s say a few words about them. Identifiers in Java may be of any length and may consist only of
 
@@ -50,7 +50,7 @@ Some names are used in Java as the so called **keywords**. They have special mea
 
 The keywords const and goto are not used, but reserved. Moreover, there are three names which formally are not keywords (they are literals) but that nevertheless cannot be used as names of anything: these are true, false and null.
 
-###### 3.1.2 Overview of primitive types
+### 3.1.2 Overview of primitive types
 
 The primitive types are (number of bytes is given in parentheses):
 
@@ -200,11 +200,11 @@ There is also >> operator — here, what comes in from the left is the value of 
 
 The representation of floating point numbers (that represent real [](#bookmark14)[2](#bookmark15) numbers known from mathematics) is completely different. Let us consider float (although it is not much used). Numbers of this type are stored in 4 bytes, i.e., 32 bits. The highest bit is just the sign bit: 0 for positive values, 1 for negative. Then we have eight bits of the so called exponent, and 23 bits of the mantissa
 
-![](main-12.png)
+`seeeeeeeefffffffffffffffffffffff`
 
 Eight bits of the exponent are collectively denoted by E and described by the number from the range \[0, 255\] that these eight bit represent in the binary system. The 23 bits of the mantissa are denoted collectively as F. Then the value is
 
-![](main-13.png)
+_V_ = (−1)<sup>s</sup> × 2<sup>E−127</sup> × 1._F_
 
 The 127 (the so called bias) is needed, because otherwise it would be impossible to represent numbers smaller than one. The first significant digit of any number expressed in binary system must be 1, so this 1 is implicitly added at the beginning, before the binary dot, and is followed by 23 bits of the mantissa. Consequently, we have not 23, but 24 significant binary digits, what corresponds to precision of decimal digits.
 
@@ -250,9 +250,11 @@ int    b    =    a +    5;
 
 For local variables, instead of declaring a type explicitly, one can use a special keyword var: then the compiler will figure out the type itself. Of course, we have to give it a chance to do so, so the variable being defined must be initialised. For example, the definitions above could have been written as
 
+```
 var    a    =    7;
 
 var    b    =    a +    5;
+```
 
 because the initialisers on the right tell the compiler that a and b should be of type int.
 
