@@ -88,19 +88,27 @@ This can be interpreted as a number in the binary system, so consecutive digits 
 
 &nbsp;&nbsp;&nbsp;&nbsp;\-b<sub>7</sub> ∙ 2<sup>7</sup> + b<sub>6</sub> ∙ 2<sup>6</sup> + b<sub>5</sub> ∙ 2<sup>5</sup> + b<sub>4</sub> ∙ 2<sup>4</sup> + b<sub>3</sub> ∙ 2<sup>3</sup> + b<sub>2</sub> ∙ 2<sup>2</sup> + b<sub>1</sub> ∙ 2<sup>1</sup> + b<sub>0</sub> ∙ 2<sup>0</sup> 
 
-Therefore, to get the highest possible value of a byte, we should set this negative part to zero, and all remaining terms with coefficient 1 — for numbers represented by one byte it would be  01111111
+Therefore, to get the highest possible value of a byte, we should set this negative part to zero, and all remaining terms with coefficient 1 — for numbers represented by one byte it would be  
 
-which is 12710. Expressing groups of four bits as hexadecimal digits (see below) the same number is 7F. The smallest (negative) byte will have 1 at the negative part and all zeros at the positive ones
+&nbsp;&nbsp;&nbsp;&nbsp;01111111  
 
-10000000
+which is 127<sub>10</sub>. Expressing groups of four bits as hexadecimal digits (see below) the same number is 7F. The smallest (negative) `byte` will have 1 at the negative part and all zeros at the positive ones
 
-what in hexadecimal notation would be -80 (it corresponds to —12810). This reasoning applies to the remaining integral types, except char — here we count all terms (char in Java is 16 bits long) with plus sign.
+&nbsp;&nbsp;&nbsp;&nbsp;10000000  
+
+what in hexadecimal notation would be -80 (it corresponds to —12810). This reasoning applies to the remaining integral types, except `char` — here we count all terms (char in Java is 16 bits long) with plus sign.
 
 There are special operators that operate on integers treating them not as numbers but rather as sequences of bits which can convey some information (not necessarily numerical). We will show these operators in Sec. [5.1.4](#bookmark10) on page [25](#bookmark10). For now just few examples.
 
 If we have two integer numbers (we will use only eight-bit numbers for simplicity), we can AND them: the result will be a sequence of bits where there is 1 whenever there is 1 in both numbers at the corresponding position, and 0 otherwise — we can interpret it as the logical conjunction bit-by-bit with 1 corresponding to true and 0 to false:
 
-![](main-4.png)
+```
+0 1 1 0 1 1 0 0
+0 1 0 1 0 1 0 1
+---------------
+&
+0 1 0 0 0 1 0 0
+```
 
 The symbol of AND is ’&’, so interpreting these sequences of bits as numbers, we get 108 & 85 = 68.
 
