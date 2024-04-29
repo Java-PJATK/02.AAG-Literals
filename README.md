@@ -33,6 +33,8 @@ Some names are used in Java as the so called **keywords**. They have special mea
 
 **Table 1** Java keywords  
 
+![](https://github.com/Java-PJATK/02.AAG-Literals/blob/main/images/JavaKeywords.PNG?raw=true)
+
 |  &nbsp;  |   &nbsp;  | &nbsp;   | &nbsp;    | &nbsp;    |
 |------------|------------|------------|------------|------------|
 | abstract   | continue   | for        | new        | switch     |
