@@ -1,7 +1,7 @@
 # 2.AAG-Literals
 Listing 2 AAG-Literals/Literals.java Page 13
 
-### Types, variables, literals  
+### Section 3. Types, variables, literals  
 
 ##### 3.1    Primitive types  
 
