@@ -5,7 +5,7 @@ Listing 2 AAG-Literals/Literals.java Page 13
 
 ##### 3.1    Primitive types  
 
-Any piece of data must have a type. In Java, the types that may correspond to named variables are called primitive (or fundamental) types. We may think of a variable of a primitive type as of a named piece of memory containing a single value of a well defined type. The type of a variable determines its length (number of bytes it occupies) and the way its contents is interpreted. In Java, only variables of primitive types can be created locally, on the stack — objects of all other types can only be created on the heap (free memory) and never have names (identifiers). We will explain what stack and heap are shortly.  
+Any piece of data must have a **type**. In Java, the types that may correspond to named variables are called **primitive** (or fundamental) types. We may think of a **variable** of a primitive type as of a named piece of memory containing a single value of a well defined type. The type of a variable determines its length (number of bytes it occupies) and the way its contents is interpreted. In Java, only variables of primitive types can be created locally, on the stack — objects of all other types can only be created on the heap (free memory) and never have names (identifiers). We will explain what stack and heap are shortly.  
 
 ###### 3.1.1    Names  
 
@@ -23,66 +23,28 @@ There are several conventions concerning identifiers which are generally accepte
 
 * Only the names of classes and interfaces should start with a capital letter.
 
-* If a name consists of several words, the first letter of each internal word should be capitalized (the so called camel-case notation). For example, getWidth, setCurrentRate, etc.
+* If a name consists of several words, the first letter of each internal word should be capitalized (the so called _camel-case notation_). For example, `getWidth`, `setCurrentRate`, etc.
 
-* The names of variables declared as constants should be all uppercase with words separated by underscores (e.g., MIN\_WIDTH).
+* The names of variables declared as constants should be all uppercase with words separated by underscores (e.g. `MIN\_WIDTH`).
 
 More information about coding convention used in Java can be found at the official Oracle’s web pag[e](#bookmark4)[1](#bookmark5).
 
-Some names are used in Java as the so called keywords. They have special meaning in the language itself (and do not correspond to any variables or classes). These names are reserved and cannot be used as identifiers of anything
+Some names are used in Java as the so called **keywords**. They have special meaning in the language itself (and do not correspond to any variables or classes). These names are reserved and cannot be used as identifiers of anything
 
-Table 1:
-Java keywords
-abstract
-continue
-for
-new
-switch
-assert
-default
-goto
-package
-synchronized
-boolean
-do
-if
-private
-this
-break
-double
-implements
-protected
-throw
-byte
-else
-import
-public
-throws
-case
-enum
-instanceof
-return
-transient
-catch
-extends
-int
-short
-try
-char
-final
-interface
-static
-void
-class
-finally
-long
-strictfp
-volatile
-const
-float
-native
-super
-while
+**Table 1** Java keywords  
+
+|  &nbsp;  |   &nbsp;  | &nbsp;   | &nbsp;    | &nbsp;    |
+|------------|------------|------------|------------|------------|
+| abstract   | continue   | for        | new        | switch     |
+| assert     | default    | goto       | package    | synchronized |
+| boolean    | do         | if         | private    | this       |
+| break      | double     | implements | protected  | throw      |
+| byte       | else       | import     | public     | throws     |
+| case       | enum       | instanceof | return     | transient  |
+| catch      | extends    | int        | short      | try        |
+| char       | final      | interface  | static     | void       |
+| class      | finally    | long       | strictfp   | volatile   |
+| const      | float      | native     | super      | while      |
 
 The keywords const and goto are not used, but reserved. Moreover, there are three names which formally are not keywords (they are literals) but that nevertheless cannot be used as names of anything: these are true, false and null.
 
@@ -429,8 +391,6 @@ The advantage of using the stack to store variables is that memory is managed fo
 The heap is a region of memory that is not managed automatically. When the program asks the system to store some data on the heap, the system searches for a free space there, writes this data in this location, marks this region as occupied and return its address — this address can be stored in a variable of a reference type (which itself may be on the stack). Note that if the value of this variable is lost, for example, because it was a local variable in a block, the data on the heap it referred to is no longer available, as we have lost its address! In Java, such unavailable object on the heap may be eventually freed automatically by the process of the so called garbage collector.
 
 Unlike the stack, variables created on the heap are accessible not only locally, but wherever their address is known. Heap memory is slower to be read from and written to, because one has to use pointers (which contain addresses) and follow them to access memory on the heap. Also, the process of allocating memory on the heap is rather complicated and time consuming.
-
-Section 4 -
 
 [1](#footnote1)
 
