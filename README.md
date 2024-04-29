@@ -262,23 +262,25 @@ long m = 101L, n = 2147483648L;
 
 (note that 2147483648 without the ’L’, would be treated as an int, but that would be wrong, because it is too big for an int!). Literal integers may also be written in octal (0 at the beginning), hexadecimal (0x at the beginning) or binary (0b at the beginning) form:
 
-`int a = 189, b = 0275, c = 0xBD, d = 0b10111101;`
+```
+int a = 189, b = 0275, c = 0xBD, d = 0b10111101;
+```
 
 Variables a, b, c and d all have the same value 189io, because (taking digits from right to left)
 
-189 = 9 · 100 + 8 · 101 + 1 · 102 = 9 + 80 + 100 = 189
-0275 = 5 · 80 + 7 · 81 + 2 · 82 = 5 + 56 + 128 = 189
-0xBD = 13 · 160 + 11 · 161 = 13 + 176 = 189
-0b10111101 = 1 · 20 + 0 · 21 + 1 · 22 + 1 · 23 + 1 · 24 + 1 · 25 + 0 · 26 + 1 · 27 =
-1 + 4 + 8 + 16 + 32 + 128 = 189
+189 = 9 · 100 + 8 · 101 + 1 · 102 = 9 + 80 + 100 = 189  
+0275 = 5 · 80 + 7 · 81 + 2 · 82 = 5 + 56 + 128 = 189  
+0xBD = 13 · 160 + 11 · 161 = 13 + 176 = 189  
+0b10111101 = 1 · 20 + 0 · 21 + 1 · 22 + 1 · 23 + 1 · 24 + 1 · 25 + 0 · 26 + 1 · 27 =  
+1 + 4 + 8 + 16 + 32 + 128 = 189  
 
 Hexadecimal notation is especially convenient, because there are 16 hexadecimal digits (0-9, A-F) and exactly 16 possible values of any four-bit group of bits. Therefore, one byte can always be described by two hexadecimal digits and vice versa — any two hexadecimal digits describe uniquely one byte. For example, the greatest short has representation
 
-0111 1111 1111 1111
+`0111 1111 1111 1111`
 
 (see above) which is 0b0111111111111111 or 0x7FFF, while the smallest
 
-1000 0000 0000 0000
+`1000 0000 0000 0000`
 
 which is 0b1000000000000000 or 0x8000. When writing such literal values, leading zeros may be omitted: instead of 0b0000000000101010, one can write just 0b101010. Additionally, you can insert underscores between digits: they will be ignored by the
 
@@ -300,17 +302,17 @@ var y = x + 0.75
 
 We can add a letter ’F’ (or ’f’) at the end if we want the compiler to treat a literal as a float
 
-###### float x = 1.5F;
+`float x = 1.5F;`
 
 Floating point numbers can also be written in the so called scientific notation. In this notation we have a number (possibly with a decimal dot), then the letter ’E’ (lower- or uppercase) and then a integral number indicating the power of 10. For example 1.25E2 means 1.25 ■ 102 (i.e., 125), while 1E-7 means 1 ■ 10\-7 (0.0000001).
 
 Literal of type char may be written as a single character in apostrophes
 
-###### char c = 'A';
+`char c = 'A';`
 
 As char is a numerical type, the value will be a number, namely the Unicode code of a given character (which for ’A’ is 65). As char occupies two bytes and is treated as a non-negative number, its values are in the range \[0, 216 — 1\] = \[0,65 535\] which is enough for all letters (and other symbols) in almost all languages to be represented. Characters that are not present on our keyboard may be entered like this
 
-char c = '\\u03B1';
+`char c = '\\u03B1';`
 
 by writing, after a backslash and letter ’u’, the Unicode code of a character in hexadecimal notation. In this case, the code 0x03B1 corresponds to the Greek letter a. There are also some special characters that cannot be entered from the keyboard, like CR (carriage return), LF (line feed), etc. They can be specified using the Unicode notation, as above, but they also correspond to special symbols: a backslash and a letter or another symbol
 
@@ -335,6 +337,8 @@ by writing, after a backslash and letter ’u’, the Unicode code of a characte
 * \\\\ - backslash;  
 
 Some examples of literals can be found in the program below:  
+
+## **Listing 2 ** AAG-Literals/Literals.java  
 
 ```java
 // AAG-Literals/Literals.java
@@ -372,50 +376,34 @@ public class Literals {
 
 ```
 
-which prints
+which prints  
 
 ```
 22
-
 18
-
 34
-
 9
-
 22.22
-
 0.222
-
 0
-
 0.3333333333333333
-
 0.3333333333333333
-
 2147483648
-
-\-2147483648
-
+-2147483648
 2147483648
-
 A
-
 67
-
 C
-
 B
-
-Hello, World Żółw
-
-number = 22 number = 4 false true
-
+Hello, World
+Żółw
+number = 22
+number = 4
+false
+true
 "TAB"s and 'NL'
-
 a    b    c    e    f
-
-g    h    i    j
+     g    h    i    j
 
 C:\\Program Files\\java
 ```
@@ -423,31 +411,43 @@ C:\\Program Files\\java
 
 and examples of creating and using variables in the program below:
 
-![](main-22.jpg)
-
-![](main-23.jpg)
+## Listing 3 AAL-Variables/Variables.java
 
 which prints
 
-![](main-24.png)
+```
+k=1, m = 2, n = 4
+Sum by 4 is equal to 1
+John and Mary
+Mary and Mary
+```
+
 
 Note that variables john and mary are not objects of type String — they are references (pointers) whose values are addresses of such objects! Therefore, john=mary means that we copy the address of the object corresponding to "Mary" to the variable john; from now on both john and mary refer to exactly the same object somewhere in memory. Object which was before referred to by the variable john is now lost (because we have lost its address) and can be garbage collected.
 
-## 3.4 Conversions
+## 3.4 Conversions  
 
 Sometimes a value of one type should be used as a value of another type. Creating a value of one type based on a value of another type is called conversion or casting. Of course, it is impossible to change the type of a variable: conversions always involve values. For example, in
 
-`int a = 7; double x = a + 1;`
+```java
+int a = 7; 
+double x = a + 1;
+```
 
 the value of the right-hand side in the second line is of type int and a double is needed to initialize the variable x; however, the compiler will silently convert int value to the corresponding double value and assign it to x. Such conversions, performed automatically by the compiler, are called implicit conversions. Generally, they will be performed if they don't lead to a loss of information. Conversion in the opposite direction
 
-`double x = 7.7;`  
-
-`int a = x; // WRONG`  
+```java
+double x = 7.7;
+int    a = x; // WRONG
+```  
 
 will not be performed; the snippet above wouldn't be even compiled. This is because an int occupies four bytes and has no fractional part, while doubles have fractional part and occupy eight bytes. Hence, conversion from double to int would lead to inevitable loss of information. We can, however, enforce the compiler to perform such conversions (taking the responsibility for possible consequences). We do it by specifying, in parentheses, name of the type we want to convert to:
 
-![](main-25.jpg)
+```java
+double x = 7.7;
+int    a = (int)x;  // now OK
+
+```
 
 Of course, after conversion, a will be exactly 7, as there is no way for an int to have a fractional part.
 
