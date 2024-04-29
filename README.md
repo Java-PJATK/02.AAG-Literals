@@ -3,7 +3,7 @@ Listing 2 AAG-Literals/Literals.java Page 13
 
 ### Types, variables, literals  
 
-3.1    Primitive types  
+##### 3.1    Primitive types  
 
 Any piece of data must have a type. In Java, the types that may correspond to named variables are called primitive (or fundamental) types. We may think of a variable of a primitive type as of a named piece of memory containing a single value of a well defined type. The type of a variable determines its length (number of bytes it occupies) and the way its contents is interpreted. In Java, only variables of primitive types can be created locally, on the stack — objects of all other types can only be created on the heap (free memory) and never have names (identifiers). We will explain what stack and heap are shortly.  
 
@@ -31,7 +31,58 @@ More information about coding convention used in Java can be found at the offici
 
 Some names are used in Java as the so called keywords. They have special meaning in the language itself (and do not correspond to any variables or classes). These names are reserved and cannot be used as identifiers of anything
 
-![](main-3.png)
+Table 1:
+Java keywords
+abstract
+continue
+for
+new
+switch
+assert
+default
+goto
+package
+synchronized
+boolean
+do
+if
+private
+this
+break
+double
+implements
+protected
+throw
+byte
+else
+import
+public
+throws
+case
+enum
+instanceof
+return
+transient
+catch
+extends
+int
+short
+try
+char
+final
+interface
+static
+void
+class
+finally
+long
+strictfp
+volatile
+const
+float
+native
+super
+while
 
 The keywords const and goto are not used, but reserved. Moreover, there are three names which formally are not keywords (they are literals) but that nevertheless cannot be used as names of anything: these are true, false and null.
 
@@ -227,31 +278,63 @@ char c = '\\u03B1';
 
 by writing, after a backslash and letter ’u’, the Unicode code of a character in hexadecimal notation. In this case, the code 0x03B1 corresponds to the Greek letter a. There are also some special characters that cannot be entered from the keyboard, like CR (carriage return), LF (line feed), etc. They can be specified using the Unicode notation, as above, but they also correspond to special symbols: a backslash and a letter or another symbol
 
-* \\a - (BEL) alert;
+* \\a - (BEL) alert;  
 
-* \\b - (BS) backspace;
+* \\b - (BS) backspace;  
 
-* \\f - (FF) form-feed (new page);
+* \\f - (FF) form-feed (new page);  
 
-* \\n - (LF) new line (linefeed);
+* \\n - (LF) new line (linefeed);  
 
-* \\r - (CR) carriage return;
+* \\r - (CR) carriage return;  
 
-* \\t - (HT) horizontal tab;
+* \\t - (HT) horizontal tab;  
 
-* \\v- (VT) vertical tab;
+* \\v- (VT) vertical tab;  
 
-* \\’ - apostrophe;
+* \\’ - apostrophe;  
 
-* \\" \- quotation mark;
+* \\" \- quotation mark;  
 
-* \\\\ - backslash;
+* \\\\ - backslash;  
 
-Some examples of literals can be found in the program below:
+Some examples of literals can be found in the program below:  
 
-![](main-20.jpg)
+```java
+// AAG-Literals/Literals.java
+ 
+public class Literals {
+    public static void main(String[] args) {
+        System.out.println(22);         // decimal
+        System.out.println(022);        // octal
+        System.out.println(0x22);       // hexadecimal
+        System.out.println(0b1001);     // binary
+        System.out.println(22.22);      // double
+        System.out.println(2.22e-1);    // "scientific"
+        System.out.println(1/3 );       // this is 0 !
+        System.out.println(1/3.);       // one third
+        System.out.println(1/3D);       // 3D -> double
+        System.out.println(2147483648L);// long
+        System.out.println(2147483647  + 1 ); // ooops!
+        System.out.println(2147483647L + 1 );
+        System.out.println('A');        // char
+        System.out.println('A'+2);      // char
+        System.out.println((char)('A'+2));
+        System.out.println('\u0042');   // also char
+        System.out.println("Hello, World");
+        System.out.println("\u017b\u00F3\u0142w");
+        System.out.println("number = " +  2+2);
+        System.out.println("number = " + (2+2));
+        System.out.println(false);
+        System.out.println(2*3 == 6);
+        System.out.println("\"TAB\"s and 'NL'\n"+
+                           "a\tb\tc\te\tf\n\tg\th\ti\tj");
+        System.out.println("C:\\Program Files\\java");
+    }
+}
 
-![](main-21.jpg)
+
+```
 
 which prints
 
