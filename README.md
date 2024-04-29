@@ -208,43 +208,40 @@ _V_ = (−1)<sup>s</sup> × 2<sup>E−127</sup> × 1._F_
 
 The 127 (the so called bias) is needed, because otherwise it would be impossible to represent numbers smaller than one. The first significant digit of any number expressed in binary system must be 1, so this 1 is implicitly added at the beginning, before the binary dot, and is followed by 23 bits of the mantissa. Consequently, we have not 23, but 24 significant binary digits, what corresponds to precision of decimal digits.
 
-![](main-14.png)
-
 For example, in
 
-![](main-15.png)
+`00111110001000000000000000000000`
 
-we have s = 0 , E = OIIIIIOO2 = 124io, F = 01000000000000000000000, so
+we have s = 0 , E = 011111002 = 12410, F = 01000000000000000000000, so  
 
-![](main-16.png)
+V = (−1)0 × 2124−127 × 1.012  
 
-which, in decimal system, is
+which, in decimal system, is  
+ 
+1.25 · 2−3 = 5/8 · 4 = 5/32 = 0.15625  
 
-![](main-17.png)
+If E = 255 (all ones in binary system), then the interpretation is special: if also F = 0, then the number represents ±ro (depending on sign bit). If F = 0 however, then it is a NaN (not-a-number — this will be the result, for example, of taking the logarithm or the square root of a negative number).  
 
-If E = 255 (all ones in binary system), then the interpretation is special: if also F = 0, then the number represents ±ro (depending on sign bit). If F = 0 however, then it is a NaN (not-a-number — this will be the result, for example, of taking the logarithm or the square root of a negative number).
+Numbers with E = 0 are also treated differently (these are the called subnormal numbers ):  
 
-Numbers with E = 0 are also treated differently (these are the called subnormal numbers ):
+V = (-1)s X 2e\-126 X 0.F  
 
-V = (-1)s X 2e\-126 X 0.F
+As there is no implicit 1 added before the mantissa part, such numbers may have fewer significant digits, so their precision is worse than that of ’normal’ numbers.  
 
-As there is no implicit 1 added before the mantissa part, such numbers may have fewer significant digits, so their precision is worse than that of ’normal’ numbers.
+The basic floating point type is double, though, not float. It occupies 8 bytes (64 bits): the sign bit, 11 bits of the exponent, 52 bits of mantissa. The bias is 1023. Adding the implicit 1, we have 53 significant binary digits, what corresponds to precision of 53/ log2 10 ~ 16 decimal digits.  
 
-The basic floating point type is double, though, not float. It occupies 8 bytes (64 bits): the sign bit, 11 bits of the exponent, 52 bits of mantissa. The bias is 1023. Adding the implicit 1, we have 53 significant binary digits, what corresponds to precision of 53/ log2 10 ~ 16 decimal digits.
+Besides primitive types, there are also the so called object types. They are defined by the user, although many such types are already defined by implementers of the standard library and we can use them in our programs. Names of object types should always start with an upper case letter (it’s not enforced by the compiler, but is a convention we should always observe).  
 
-Besides primitive types, there are also the so called object types. They are defined by the user, although many such types are already defined by implementers of the standard library and we can use them in our programs. Names of object types should always start with an upper case letter (it’s not enforced by the compiler, but is a convention we should always observe).
+Objects of these types (variables) cannot be created locally on the stack and never have names. They are created on the heap and can be automatically removed from memory when not needed anymore. We have access to such objects only through references (pointers) to them which physically contain only their addresses, not values. There is a special process, called garbage collector, which detects object on the heap which are not referenced anymore by any reference variable in the program and removes these unnecessary objects from memory. Object types are defined by classes which we will cover in the following chapters. Generally, they describe objects more complicated than just a single value: the object may contain several numbers, Boolean values, and references (addresses) to other objects (e.g., of type String); moreover, the class also defines operations that may act upon all this data.  
 
-Objects of these types (variables) cannot be created locally on the stack and never have names. They are created on the heap and can be automatically removed from memory when not needed anymore. We have access to such objects only through references (pointers) to them which physically contain only their addresses, not values. There is a special process, called garbage collector, which detects object on the heap which are not referenced anymore by any reference variable in the program and removes these unnecessary objects from memory. Object types are defined by classes which we will cover in the following chapters. Generally, they describe objects more complicated than just a single value: the object may contain several numbers, Boolean values, and references (addresses) to other objects (e.g., of type String); moreover, the class also defines operations that may act upon all this data.
+Let us emphasize again that a variable (called object) of an object type is always anonymous — there is no way to give it any name. Only variables of reference types (pointers), which hold addresses of objects as their values, may have names (identifiers).  
 
-Let us emphasize again that a variable (called object) of an object type is always anonymous — there is no way to give it any name. Only variables of reference types (pointers), which hold addresses of objects as their values, may have names (identifiers).
+## 3.3 Variables and literals  
 
-## 3.3 Variables and literals
-
-Variable may be understood as a named region of memory storing a value of a specified type. Each variable, before it can be used, has to be created (declared and defined) — in declaration we specify its name and type. It is also recommended to assign a value to any newly created variable (initialize it). Java compiler will not allow us to refer to the value of a variable until it can see an assignment of a value to this variable. When assigning a value to a variable, we can use the value of any expression yielding a value of an appropriate type; in the simplest case this may be just a value specified literally. A number written without a decimal dot is understood to be of type int.
+Variable may be understood as a named region of memory storing a value of a specified type. Each variable, before it can be used, has to be created (declared and defined) — in declaration we specify its name and type. It is also recommended to assign a value to any newly created variable (initialize it). Java compiler will not allow us to refer to the value of a variable until it can see an assignment of a value to this variable. When assigning a value to a variable, we can use the value of any expression yielding a value of an appropriate type; in the simplest case this may be just a value specified literally. A number written without a decimal dot is understood to be of type int.  
 
 ```
 int    a    =    7;
-
 int    b    =    a +    5;
 ```
 
@@ -252,7 +249,6 @@ For local variables, instead of declaring a type explicitly, one can use a speci
 
 ```
 var    a    =    7;
-
 var    b    =    a +    5;
 ```
 
@@ -260,15 +256,21 @@ because the initialisers on the right tell the compiler that a and b should be o
 
 We can add a letter ’L’ (or lower-case ’l’, but that could be easily confused with digit 1) at the and if we want the compiler to treat it as a long
 
+```
 long m = 101L, n = 2147483648L;
+```
 
 (note that 2147483648 without the ’L’, would be treated as an int, but that would be wrong, because it is too big for an int!). Literal integers may also be written in octal (0 at the beginning), hexadecimal (0x at the beginning) or binary (0b at the beginning) form:
 
-###### int a = 189, b = 0275, c = 0xBD, d = 0b10111101;
+`int a = 189, b = 0275, c = 0xBD, d = 0b10111101;`
 
 Variables a, b, c and d all have the same value 189io, because (taking digits from right to left)
 
-![](main-18.png)
+189 = 9 · 100 + 8 · 101 + 1 · 102 = 9 + 80 + 100 = 189
+0275 = 5 · 80 + 7 · 81 + 2 · 82 = 5 + 56 + 128 = 189
+0xBD = 13 · 160 + 11 · 161 = 13 + 176 = 189
+0b10111101 = 1 · 20 + 0 · 21 + 1 · 22 + 1 · 23 + 1 · 24 + 1 · 25 + 0 · 26 + 1 · 27 =
+1 + 4 + 8 + 16 + 32 + 128 = 189
 
 Hexadecimal notation is especially convenient, because there are 16 hexadecimal digits (0-9, A-F) and exactly 16 possible values of any four-bit group of bits. Therefore, one byte can always be described by two hexadecimal digits and vice versa — any two hexadecimal digits describe uniquely one byte. For example, the greatest short has representation
 
@@ -282,9 +284,19 @@ which is 0b1000000000000000 or 0x8000. When writing such literal values, leading
 
 compiler, but improve readability. The number 1\_123\_343\_198 is much easier to read for human than 1123343198.
 
-A number written literally, but with a decimal point is understood to be a double
+A number written literally, but with a decimal point is understood to be a `double`  
 
-![](main-19.jpg)
+```
+double x = 1.5;
+double y = x + 0.75;
+```
+
+or
+
+```
+var x = 1.5;
+var y = x + 0.75
+```
 
 We can add a letter ’F’ (or ’f’) at the end if we want the compiler to treat a literal as a float
 
