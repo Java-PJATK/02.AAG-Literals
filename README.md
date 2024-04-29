@@ -56,33 +56,33 @@ The primitive types are (number of bytes is given in parentheses):
 
 * Numerical types:
 
-—    integral types correspond to integer (whole) numbers. Their possible values belong to interval \[—2N-1, 2N-1 — 1\], where N is the number of bits (one byte = 8 bits). The exception is char whose values are always interpreted as non-negative and belong to interval \[0, 216 — 1\].
+—    integral types correspond to integer (whole) numbers. Their possible values belong to interval \[—2<sup>N-1</sup>, 2<sup>N-1</sup>— 1\], where N is the number of bits (one byte = 8 bits). The exception is char whose values are always interpreted as non-negative and belong to interval \[0, 216 — 1\].
 
-* byte (1) — values in range \[—128,127\];
+* `byte` (1) — values in range \[—128,127\];
 
-* short (2) — values in range \[—32 768, 32 767\];
+* `short` (2) — values in range \[—32 768, 32 767\];
 
-* char (2) — values in range \[0, 65 535\] interpreted as Unicode code points of characters (always non-negative);
+* `char` (2) — values in range \[0, 65 535\] interpreted as Unicode code points of characters (always non-negative);
 
-* int (4) —values in range \[—2147483 648, 2147483 647\];
+* `int` (4) —values in range \[—2147483 648, 2147483 647\];
 
-* long (8) — values in an astronomical range \[—9 223 372 036 854 775 808, 9 223 372 036 854 775 807\].
+* `long` (8) — values in an astronomical range \[—9 223 372 036 854 775 808, 9 223 372 036 854 775 807\].
 
 —    floating point types correspond to real numbers (with fractional parts). There are two such types with different ranges and precision.
 
-\* float (4) — values in range \[≈ 1.4 ∙ 10\-45, ≈3.4 ∙ 10+38\] positive or negative, with roughly 7 significant decimal digits - rarely used;
+\* `float` (4) — values in range \[≈ 1.4 ∙ 10\-45, ≈3.4 ∙ 10+38\] positive or negative, with roughly 7 significant decimal digits - rarely used;
 
-\* double (8) — values in range \[≈ 4.9 ∙ 10 \- 324, ≈ 1.8 ∙ 10+308\] positive or negative, with roughly 16 significant decimal digits.
+\* `double` (8) — values in range \[≈ 4.9 ∙ 10 \- 324, ≈ 1.8 ∙ 10+308\] positive or negative, with roughly 16 significant decimal digits.
 
-* Logical type boolean — has only two possible values: true and false. They are not convertible to numerical values, neither are numerical values convertible to boolean (as they are in many other languages);
+* Logical type `boolean` — has only two possible values: true and false. They are not convertible to numerical values, neither are numerical values convertible to boolean (as they are in many other languages);
 
 * References to objects: — variables of these types hold as their values addresses of objects (of the so called object types, there are no references to variables of primitive types in Java). In C/C++ such variables are called pointers. \[Note that C++ also uses references, but they do not have much in common with what we call references in Java.\]
 
-###### 3.1.3 Integral types
+### 3.1.3 Integral types
 
 Let us explain how integral values are represented in computer’s memory. Consider a byte: it contains 8 bits, so we can represent it by a sequence of eight digits, each of which is 0 or 1:
 
-b7b6b5b4b3b2b1b0
+b<sub>7</sub>b<sub>6</sub>b<sub>5</sub>b<sub>4</sub>b<sub>3</sub>b<sub>2</sub>b<sub>1</sub>b<sub>0</sub>
 
 This can be interpreted as a number in the binary system, so consecutive digits (from the right) are coefficients at consecutive powers of 2. There is a quirk, however: in order to be able to represent also negative numbers, the term with the highest power of 2 is taken with negative sign
 
@@ -140,7 +140,7 @@ while the opposite holds for right shift (>>>):
 
 There is also >> operator — here, what comes in from the left is the value of the highest (leftmost) bit: if that is 0 (was corresponds to positive numbers), then zeros come in while if its is 1 (negative numbers), then ones will come in. More details can be found in Section [5.1.4](#bookmark10) on p. [25](#bookmark10).
 
-3.1.4 Floating point types
+### 3.1.4 Floating point types
 
 The representation of floating point numbers (that represent real [](#bookmark14)[2](#bookmark15) numbers known from mathematics) is completely different. Let us consider float (although it is not much used). Numbers of this type are stored in 4 bytes, i.e., 32 bits. The highest bit is just the sign bit: 0 for positive values, 1 for negative. Then we have eight bits of the so called exponent, and 23 bits of the mantissa
 
@@ -182,13 +182,15 @@ Objects of these types (variables) cannot be created locally on the stack and ne
 
 Let us emphasize again that a variable (called object) of an object type is always anonymous — there is no way to give it any name. Only variables of reference types (pointers), which hold addresses of objects as their values, may have names (identifiers).
 
-3.3 Variables and literals
+## 3.3 Variables and literals
 
 Variable may be understood as a named region of memory storing a value of a specified type. Each variable, before it can be used, has to be created (declared and defined) — in declaration we specify its name and type. It is also recommended to assign a value to any newly created variable (initialize it). Java compiler will not allow us to refer to the value of a variable until it can see an assignment of a value to this variable. When assigning a value to a variable, we can use the value of any expression yielding a value of an appropriate type; in the simplest case this may be just a value specified literally. A number written without a decimal dot is understood to be of type int.
 
+```
 int    a    =    7;
 
 int    b    =    a +    5;
+```
 
 For local variables, instead of declaring a type explicitly, one can use a special keyword var: then the compiler will figure out the type itself. Of course, we have to give it a chance to do so, so the variable being defined must be initialised. For example, the definitions above could have been written as
 
@@ -302,6 +304,7 @@ public class Literals {
 
 which prints
 
+```
 22
 
 18
@@ -345,6 +348,8 @@ a    b    c    e    f
 g    h    i    j
 
 C:\\Program Files\\java
+```
+
 
 and examples of creating and using variables in the program below:
 
@@ -358,17 +363,17 @@ which prints
 
 Note that variables john and mary are not objects of type String — they are references (pointers) whose values are addresses of such objects! Therefore, john=mary means that we copy the address of the object corresponding to "Mary" to the variable john; from now on both john and mary refer to exactly the same object somewhere in memory. Object which was before referred to by the variable john is now lost (because we have lost its address) and can be garbage collected.
 
-3.4 Conversions
+## 3.4 Conversions
 
 Sometimes a value of one type should be used as a value of another type. Creating a value of one type based on a value of another type is called conversion or casting. Of course, it is impossible to change the type of a variable: conversions always involve values. For example, in
 
-##### int a = 7; double x = a + 1;
+`int a = 7; double x = a + 1;`
 
 the value of the right-hand side in the second line is of type int and a double is needed to initialize the variable x; however, the compiler will silently convert int value to the corresponding double value and assign it to x. Such conversions, performed automatically by the compiler, are called implicit conversions. Generally, they will be performed if they don't lead to a loss of information. Conversion in the opposite direction
 
-##### double x = 7.7;
+`double x = 7.7;`  
 
-int a = x; // WRONG
+`int a = x; // WRONG`  
 
 will not be performed; the snippet above wouldn't be even compiled. This is because an int occupies four bytes and has no fractional part, while doubles have fractional part and occupy eight bytes. Hence, conversion from double to int would lead to inevitable loss of information. We can, however, enforce the compiler to perform such conversions (taking the responsibility for possible consequences). We do it by specifying, in parentheses, name of the type we want to convert to:
 
