@@ -304,7 +304,7 @@ We can add a letter ’F’ (or ’f’) at the end if we want the compiler to t
 
 `float x = 1.5F;`
 
-Floating point numbers can also be written in the so called scientific notation. In this notation we have a number (possibly with a decimal dot), then the letter ’E’ (lower- or uppercase) and then a integral number indicating the power of 10. For example 1.25E2 means 1.25 ■ 102 (i.e., 125), while 1E-7 means 1 ■ 10\-7 (0.0000001).
+Floating point numbers can also be written in the so called scientific notation. In this notation we have a number (possibly with a decimal dot), then the letter ’E’ (lower- or uppercase) and then a integral number indicating the power of 10. For example 1.25E2 means 1.25 ⋅ 102 (i.e., 125), while 1E-7 means 1 ⋅ 10\-7 (0.0000001).
 
 Literal of type char may be written as a single character in apostrophes
 
@@ -341,8 +341,6 @@ Some examples of literals can be found in the program below:
 ## **Listing 2 ** AAG-Literals/Literals.java  
 
 ```java
-// AAG-Literals/Literals.java
- 
 public class Literals {
     public static void main(String[] args) {
         System.out.println(22);         // decimal
@@ -412,6 +410,10 @@ C:\\Program Files\\java
 and examples of creating and using variables in the program below:
 
 ## Listing 3 AAL-Variables/Variables.java
+
+```java
+
+```
 
 which prints
 
