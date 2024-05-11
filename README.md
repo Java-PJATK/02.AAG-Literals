@@ -457,7 +457,7 @@ Note also that this conversion does not affect the variable x as such: its type 
 
 The exact rules of conversions are more complicated, but general principle is that conversions from “narrow” types to “wider” are performed implicitly (byte,char,short^int, int,float,long^double, etc.), while conversions in the opposite direction must be explicit.
 
-3.5 The stack and the heap
+## 3.5 The stack and the heap
 
 Let us briefly explain what the stack and the heap are.
 
