@@ -212,19 +212,19 @@ For example, in
 
 `00111110001000000000000000000000`
 
-we have s = 0 , E = 011111002 = 12410, F = 01000000000000000000000, so  
+we have s = 0 , E = 01111100<sub>2</sub>  = 124<sub>10</sub> , F = 01000000000000000000000, so  
 
-V = (−1)0 × 2124−127 × 1.012  
+V = (−1)0 × 2<sup>124−127</sup> × 1.01_<sub>2</sub>  
 
 which, in decimal system, is  
  
-1.25 · 2−3 = 5/8 · 4 = 5/32 = 0.15625  
+1.25 · 2<sup>−3 </sup>= 5/8 · 4 = 5/32 = 0.15625  
 
 If E = 255 (all ones in binary system), then the interpretation is special: if also F = 0, then the number represents ±ro (depending on sign bit). If F = 0 however, then it is a NaN (not-a-number — this will be the result, for example, of taking the logarithm or the square root of a negative number).  
 
 Numbers with E = 0 are also treated differently (these are the called subnormal numbers ):  
 
-V = (-1)s X 2e\-126 X 0.F  
+V = (-1)<sup>s</sup> X 2<sup>E\-126</sup> X 0.F  
 
 As there is no implicit 1 added before the mantissa part, such numbers may have fewer significant digits, so their precision is worse than that of ’normal’ numbers.  
 
