@@ -338,7 +338,7 @@ by writing, after a backslash and letter ’u’, the Unicode code of a characte
 
 Some examples of literals can be found in the program below:  
 
-## **Listing 2 ** AAG-Literals/Literals.java  
+## Listing 2 AAG-Literals/Literals.java  
 
 ```java
 public class Literals {
