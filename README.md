@@ -198,7 +198,7 @@ There is also >> operator — here, what comes in from the left is the value of 
 
 ### 3.1.4 Floating point types
 
-The representation of floating point numbers (that represent real [](#bookmark14)[2](#bookmark15) numbers known from mathematics) is completely different. Let us consider float (although it is not much used). Numbers of this type are stored in 4 bytes, i.e., 32 bits. The highest bit is just the sign bit: 0 for positive values, 1 for negative. Then we have eight bits of the so called exponent, and 23 bits of the mantissa
+The representation of floating point numbers (that represent real [](#bookmark14)[2](#bookmark15) numbers known from mathematics) is completely different. Let us consider float (although it is not much used). Numbers of this type are stored in 4 bytes, i.e. 32 bits. The highest bit is just the sign bit: 0 for positive values, 1 for negative. Then we have eight bits of the so called exponent, and 23 bits of the mantissa
 
 `seeeeeeeefffffffffffffffffffffff`
 
@@ -234,7 +234,7 @@ The basic floating point type is double, though, not float. It occupies 8 bytes 
 
 Besides primitive types, there are also the so called **object types**. They are defined by the user, although many such types are already defined by implementers of the standard library and we can use them in our programs. Names of object types should always start with an upper case letter (it’s not enforced by the compiler, but is a convention we should always observe).  
 
-Objects of these types (variables) cannot be created locally on the stack and never have names. They are created on the heap and can be automatically removed from memory when not needed anymore. We have access to such objects only through references (pointers) to them which physically contain only their addresses, not values. There is a special process, called **garbage collector**, which detects object on the heap which are not referenced anymore by any reference variable in the program and removes these unnecessary objects from memory. Object types are defined by `classes` which we will cover in the following chapters. Generally, they describe objects more complicated than just a single value: the object may contain several numbers, Boolean values, and references (addresses) to other objects (e.g., of type `String`); moreover, the class also defines operations that may act upon all this data.  
+Objects of these types (variables) cannot be created locally on the stack and never have names. They are created on the heap and can be automatically removed from memory when not needed anymore. We have access to such objects only through references (pointers) to them which physically contain only their addresses, not values. There is a special process, called **garbage collector**, which detects object on the heap which are not referenced anymore by any reference variable in the program and removes these unnecessary objects from memory. Object types are defined by `classes` which we will cover in the following chapters. Generally, they describe objects more complicated than just a single value: the object may contain several numbers, Boolean values, and references (addresses) to other objects (e.g. of type `String`); moreover, the class also defines operations that may act upon all this data.  
 
 Let us emphasize again that a variable (called _object_) of an object type is _always_ anonymous — there is no way to give it any name. Only variables of reference types (pointers), which hold _addresses_ of objects as their values, may have names (identifiers).  
 
@@ -307,7 +307,7 @@ We can add a letter ’F’ (or ’f’) at the end if we want the compiler to t
 
 `float x = 1.5F;`
 
-Floating point numbers can also be written in the so called scientific notation. In this notation we have a number (possibly with a decimal dot), then the letter ’E’ (lower- or uppercase) and then a integral number indicating the power of 10. For example 1.25E2 means 1.25 ⋅ 10<sup>2</sup> (i.e., 125), while 1E-7 means 1 ⋅ 10<sup>-7</sup> (0.0000001).
+Floating point numbers can also be written in the so called scientific notation. In this notation we have a number (possibly with a decimal dot), then the letter ’E’ (lower- or uppercase) and then a integral number indicating the power of 10. For example 1.25E2 means 1.25 ⋅ 10<sup>2</sup> (i.e. 125), while 1E-7 means 1 ⋅ 10<sup>-7</sup> (0.0000001).
 
 Literal of type char may be written as a single character in apostrophes
 
@@ -463,9 +463,9 @@ The exact rules of conversions are more complicated, but general principle is th
 
 Let us briefly explain what the stack and the heap are.
 
-Both are parts of memory that are available to the program at runtime. The stack is simpler: when a new value (e.g., of a variable) is to be added, it is always added at the “top” of the stack. The address of the current “top” of the stack is always available at runtime: actually, there is a special register of the processor dedicated only to store information on the current location of the top of the stack. In particular, no “looking for enough room in memory” is involved.
+Both are parts of memory that are available to the program at runtime. The stack is simpler: when a new value (e.g. of a variable) is to be added, it is always added at the “top” of the stack. The address of the current “top” of the stack is always available at runtime: actually, there is a special register of the processor dedicated only to store information on the current location of the top of the stack. In particular, no “looking for enough room in memory” is involved.
 
-Whenever we create a new variable inside a block of code (e.g., inside a function), its value is pushed onto the stack. Then every time the flow of control leaves the block (e.g., a function exits), all the variables pushed onto the stack in this block are freed (deleted) in the reverse order as they were pushed, and stack is, as we say, rewound — the top of the stack is again at the position it had before entering the block. This means that all variables declared inside a block are lost forever when we leave it: they are all _local_. The process of removing values from the stack is called “popping off the stack”.
+Whenever we create a new variable inside a block of code (e.g. inside a function), its value is pushed onto the stack. Then every time the flow of control leaves the block (e.g. a function exits), all the variables pushed onto the stack in this block are freed (deleted) in the reverse order as they were pushed, and stack is, as we say, rewound — the top of the stack is again at the position it had before entering the block. This means that all variables declared inside a block are lost forever when we leave it: they are all _local_. The process of removing values from the stack is called “popping off the stack”.
 
 The advantage of using the stack to store variables is that memory is managed for you automatically. We don't have to allocate memory by hand, or free it once we don't need it any more. Also, the CPU organizes stack memory very efficiently: reading from and writing to stack is very fast.
 
