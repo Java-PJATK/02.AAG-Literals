@@ -266,13 +266,17 @@ long m = 101L, n = 2147483648L;
 int a = 189, b = 0275, c = 0xBD, d = 0b10111101;
 ```
 
-Variables a, b, c and d all have the same value 189io, because (taking digits from right to left)
+Variables a, b, c and d all have the same value 189<sub>10</sub>, because (taking digits from right to left)
 
-189 = 9 · 100 + 8 · 101 + 1 · 102 = 9 + 80 + 100 = 189  
-0275 = 5 · 80 + 7 · 81 + 2 · 82 = 5 + 56 + 128 = 189  
-0xBD = 13 · 160 + 11 · 161 = 13 + 176 = 189  
-0b10111101 = 1 · 20 + 0 · 21 + 1 · 22 + 1 · 23 + 1 · 24 + 1 · 25 + 0 · 26 + 1 · 27 =  
-1 + 4 + 8 + 16 + 32 + 128 = 189  
+189 = 9 · 10<sup>0</sup> + 8 · 10<sup>1</sup> + 1 · 10<sup>2</sup> = 9 + 80 + 100 = 189
+
+0275 = 5 · 8<sup>0</sup> + 7 · 8<sup>1</sup> + 2 · 8<sup>2</sup> = 5 + 56 + 128 = 189
+
+0xBD = 13 · 16<sup>0</sup> + 11 · 16<sup>1</sup> = 13 + 176 = 189
+
+0b10111101 = 1 · 2<sup>0</sup> + 0 · 2<sup>1</sup> + 1 · 2<sup>2</sup> + 1 · 2<sup>3</sup> + 1 · 2<sup>4</sup> + 1 · 2<sup>5</sup> + 0 · 2<sup>6</sup> + 1 · 2<sup>7</sup> =
+1 + 4 + 8 + 16 + 32 + 128 = 189
+
 
 Hexadecimal notation is especially convenient, because there are 16 hexadecimal digits (0-9, A-F) and exactly 16 possible values of any four-bit group of bits. Therefore, one byte can always be described by two hexadecimal digits and vice versa — any two hexadecimal digits describe uniquely one byte. For example, the greatest short has representation
 
@@ -282,9 +286,7 @@ Hexadecimal notation is especially convenient, because there are 16 hexadecimal 
 
 `1000 0000 0000 0000`
 
-which is 0b1000000000000000 or 0x8000. When writing such literal values, leading zeros may be omitted: instead of 0b0000000000101010, one can write just 0b101010. Additionally, you can insert underscores between digits: they will be ignored by the
-
-compiler, but improve readability. The number 1\_123\_343\_198 is much easier to read for human than 1123343198.
+which is 0b1000000000000000 or 0x8000. When writing such literal values, leading zeros may be omitted: instead of 0b0000000000101010, one can write just 0b101010. Additionally, you can insert underscores between digits: they will be ignored by the compiler, but improve readability. The number 1\_123\_343\_198 is much easier to read than 1123343198.
 
 A number written literally, but with a decimal point is understood to be a `double`  
 
@@ -423,7 +425,6 @@ Sum by 4 is equal to 1
 John and Mary
 Mary and Mary
 ```
-
 
 Note that variables john and mary are not objects of type String — they are references (pointers) whose values are addresses of such objects! Therefore, john=mary means that we copy the address of the object corresponding to "Mary" to the variable john; from now on both john and mary refer to exactly the same object somewhere in memory. Object which was before referred to by the variable john is now lost (because we have lost its address) and can be garbage collected.
 
