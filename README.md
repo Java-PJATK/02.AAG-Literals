@@ -70,9 +70,9 @@ The primitive types are (number of bytes is given in parentheses):
 
 —    floating point types correspond to real numbers (with fractional parts). There are two such types with different ranges and precision.
 
-\* `float` (4) — values in range \[≈ 1.4 ∙ 10\<sup>-45</sup>, ≈3.4 ∙ 10<sup>+38</sup>\] positive or negative, with roughly 7 significant decimal digits - rarely used;
+\* `float` (4) — values in range \[≈ 1.4 ∙ 10<sup>-45</sup>, ≈3.4 ∙ 10<sup>+38</sup>\] positive or negative, with roughly 7 significant decimal digits - rarely used;
 
-\* `double` (8) — values in range \[≈ 4.9 ∙ 10 \<sup>-324</sup>, ≈ 1.8 ∙ 10<sup>+308</sup>\] positive or negative, with roughly 16 significant decimal digits.
+\* `double` (8) — values in range \[≈ 4.9 ∙ 10 <sup>-324</sup>, ≈ 1.8 ∙ 10<sup>+308</sup>\] positive or negative, with roughly 16 significant decimal digits.
 
 * Logical type `boolean` — has only two possible values: true and false. They are not convertible to numerical values, neither are numerical values convertible to boolean (as they are in many other languages);
 
